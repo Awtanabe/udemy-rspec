@@ -38,17 +38,14 @@ end
 # movie = Movie.new(actor)
 # movie.start_shooting
 
-RSpec.describe Movie do
-  let(:stundman){ double('Mr danger', ready?: true, act: "call my aget", fall_off_ladder: 'sure', light_on_fire: true)}
-  subject { described_class.new(stundman)}
+RSpec.describe 'test' do
+  it 'test' do
+    three_ele_arr = double # [1,2,3]
+    allow(three_ele_arr).to receive(:first).with(no_args).and_return(1)
+    allow(three_ele_arr).to receive(:first).with(1).and_return([1])
+    allow(three_ele_arr).to receive(:first).with(3).and_return([1,2,3])
 
-    describe 'ddd' do
-      it 'test' do
-        expect(stundman).to receive(:light_on_fire).once
-        expect(stundman).to receive(:light_on_fire).exactly(1).times
-        expect(stundman).to receive(:light_on_fire).at_least(1).times
-        expect(stundman).to receive(:light_on_fire).at_most(1).times
-        subject.start_shooting
-      end
-    end
+    expect(three_ele_arr.first(1)).to eq([1])
+    expect(three_ele_arr.first(3)).to eq([1,2,3])
+  end
 end
