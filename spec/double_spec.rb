@@ -38,34 +38,21 @@ end
 # movie = Movie.new(actor)
 # movie.start_shooting
 
-# RSpec.describe Hash do
-#   # let(:my_hash) { {} }
+class Prince
+  attr_reader :name
 
-#   it 'should start off empty' do
-#     expect(subject.length).to eq(0)
-#     subject[:some_key] = "Some Value"
-#     expect(subject.length).to eq(1)
-#   end
-
-#   it 'is isolated between examples' do
-#     expect(subject.length).to eq(0)
-#   end
-# end
-
-RSpec.describe Hash do
-  subject(:bob) do
-    { a: 1, b: 2 }
-  end
-
-  it 'has two key-value pairs' do
-    expect(subject.length).to eq(2)
-    expect(bob.length).to eq(2)
-  end
-
-  describe 'nexted example' do
-    it 'has two key-value pairs' do
-      expect(subject.length).to eq(2)
-      expect(bob.length).to eq(2)
-    end
+  def initialize(name)
+    @name = name
   end
 end
+
+RSpec.describe Prince do
+  subject { described_class.new('Boris') }
+  let(:louis) { described_class.new('Louis') }
+
+  it 'represents a great person' do
+    expect(subject.name).to eq('Boris')
+    expect(louis.name).to eq('Louis')
+  end
+end
+
