@@ -38,14 +38,21 @@ end
 # movie = Movie.new(actor)
 # movie.start_shooting
 
+class Person
+  def a
+    sleep(3)
+    "Hello"
+  end
+end
+
 RSpec.describe 'test' do
   it 'test' do
-    three_ele_arr = double # [1,2,3]
-    allow(three_ele_arr).to receive(:first).with(no_args).and_return(1)
-    allow(three_ele_arr).to receive(:first).with(1).and_return([1])
-    allow(three_ele_arr).to receive(:first).with(3).and_return([1,2,3])
+    person = double(a: "Hello", b: 20)
+    expect(person.a).to eq("Hello")
+  end
 
-    expect(three_ele_arr.first(1)).to eq([1])
-    expect(three_ele_arr.first(3)).to eq([1,2,3])
+  it 'test' do
+    person = instance_double(Person, a: "Hello", b:20)
+    expect(person.a).to eq("Hello")
   end
 end
