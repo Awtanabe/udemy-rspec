@@ -38,21 +38,34 @@ end
 # movie = Movie.new(actor)
 # movie.start_shooting
 
-class Person
-  def self.a
-    sleep(3)
-    "Hello"
-  end
-end
+# RSpec.describe Hash do
+#   # let(:my_hash) { {} }
 
-RSpec.describe 'test' do
-  it 'test' do
-    person = double(a: "Hello", b: 20)
-    expect(person.a).to eq("Hello")
+#   it 'should start off empty' do
+#     expect(subject.length).to eq(0)
+#     subject[:some_key] = "Some Value"
+#     expect(subject.length).to eq(1)
+#   end
+
+#   it 'is isolated between examples' do
+#     expect(subject.length).to eq(0)
+#   end
+# end
+
+RSpec.describe Hash do
+  subject(:bob) do
+    { a: 1, b: 2 }
   end
 
-  it 'test' do
-    person = class_double(Person, a: "Hello", b:20)
-    expect(person.a).to eq("Hello")
+  it 'has two key-value pairs' do
+    expect(subject.length).to eq(2)
+    expect(bob.length).to eq(2)
+  end
+
+  describe 'nexted example' do
+    it 'has two key-value pairs' do
+      expect(subject.length).to eq(2)
+      expect(bob.length).to eq(2)
+    end
   end
 end
