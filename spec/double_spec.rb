@@ -39,7 +39,7 @@ end
 # movie.start_shooting
 
 class Person
-  def a
+  def self.a
     sleep(3)
     "Hello"
   end
@@ -52,7 +52,7 @@ RSpec.describe 'test' do
   end
 
   it 'test' do
-    person = instance_double(Person, a: "Hello", b:20)
+    person = class_double(Person, a: "Hello", b:20)
     expect(person.a).to eq("Hello")
   end
 end
